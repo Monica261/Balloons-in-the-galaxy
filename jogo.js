@@ -55,8 +55,11 @@ function contagem_tempo(segundos){
 }
 
 function game_over(){
+	remove_eventos_baloes();
 	alert('Fim de jogo, você não estourou todos os balões!');
+
 }
+	situacao_jogo:
 
 function cria_baloes(qtde_baloes){
 	for(var i = 1; i <= qtde_baloes; i++){
@@ -115,4 +118,15 @@ function placar(baloes_estourados){
 
 function parar_jogo(){
 	clearTimeout(timerId);
+}
+
+function remove_eventos_baloes() {
+    var i = 1; //contado para recuperar balões por id
+    
+    //percorre o lementos de acordo com o id e só irá sair do laço quando não houver correspondência com elemento
+    while(document.getElementById('b'+i)) {
+        //retira o evento onclick do elemnto
+        document.getElementById('b'+i).onclick = '';
+        i++; //faz a iteração da variávei i
+    }
 }
